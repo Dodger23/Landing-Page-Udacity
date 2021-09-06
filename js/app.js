@@ -19,7 +19,8 @@
  */
 
 let nav = document.getElementById('navbar__list');
-let main = document.getElementsByTagName('main')[0]
+
+let main = document.getElementsByTagName('main')[0];
 
 let content = [{
         head: "Section 1",
@@ -57,7 +58,7 @@ let content = [{
         p2: `Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet
     porttitor tortor, eget elementum tortor mollis non.`,
     },
-]
+];
 
 
 
@@ -71,6 +72,9 @@ let content = [{
  * 
  */
 
+/**
+ * @description Checks if an element is in the current viewport
+ */
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -85,9 +89,11 @@ function isInViewport(element) {
  */
 
 // build the nav
+/**
+ * @description Build the navbar from the sections objects array 
+ */
 function buildNav() {
     let frag = document.createDocumentFragment();
-
     content.forEach(function(section) {
         let li = document.createElement('li');
         let a = document.createElement('a');
@@ -104,6 +110,10 @@ function buildNav() {
 
 
 // Add class 'active' to section when near top of viewport
+
+/**
+ * @description Add class 'active' to section when near top of viewport
+ */
 function addClassActiveToSection() {
     let sections = [...document.querySelectorAll('section')];
     document.addEventListener('scroll', function() {
@@ -121,6 +131,9 @@ function addClassActiveToSection() {
 
 
 // Scroll to anchor ID using scrollTO event
+/**
+ * @description Scroll to anchor ID using scrollTO event
+ */
 function scrollToSection() {
     let sections = [...document.querySelectorAll('section')];
     for (let i = 0; i < content.length; i++) {
@@ -154,10 +167,11 @@ content.forEach(function(section) {
     main.appendChild(s);
 })
 
-// Build menu 
+// Build menu
 buildNav();
+
 // Scroll to section on link click
-scrollToSection()
+scrollToSection();
 
 // Set sections as active
-addClassActiveToSection()
+addClassActiveToSection();
