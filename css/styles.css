@@ -115,6 +115,7 @@ section {
 }
 
 .page__footer p {
+    text-align: center;
     color: #fff;
 }
 
