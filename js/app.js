@@ -156,7 +156,8 @@ function scrollToSection() {
 // Build sections 
 content.forEach(function(section) {
     let s = document.createElement('section');
-    s.outerHTML = `<section id="section${section.id}" data-nav="Section ${section.id}" class="your-active-class"></section>`
+    s.setAttribute('id', `section${section.id}`);
+    s.setAttribute('data-nav', `Section ${section.id}`);
     s.innerHTML = `
     <div class="landing__container">
         <h2>${section.head}</h2>
