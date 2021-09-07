@@ -93,11 +93,12 @@ function isInViewport(element) {
  * @description Build the navbar from the sections objects array 
  */
 function buildNav() {
+    let sections = document.querySelectorAll('section');
     let frag = document.createDocumentFragment();
-    content.forEach(function(section) {
+    sections.forEach(function(section) {
         let li = document.createElement('li');
         let a = document.createElement('a');
-        a.innerText = section.head;
+        a.innerText = section.getAttribute('data-nav');
         a.style.cursor = 'pointer';
         a.classList.add('menu__link');
         li.appendChild(a);
@@ -116,13 +117,20 @@ function buildNav() {
  */
 function addClassActiveToSection() {
     let sections = [...document.querySelectorAll('section')];
+    let nav = document.querySelectorAll('li a');
+    console.log(nav);
+
     document.addEventListener('scroll', function() {
+        let i = 0;
         sections.forEach(function(section) {
             if (isInViewport(section)) {
                 section.classList.add('your-active-class')
+                nav.item(i).classList.add('menu__active__link');
             } else {
                 section.classList.remove('your-active-class');
+                nav.item(i).classList.remove('menu__active__link');
             }
+            i++;
         })
     })
 }
